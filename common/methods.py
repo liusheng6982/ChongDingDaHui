@@ -7,6 +7,9 @@
 import requests
 import webbrowser
 import urllib
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 # # 颜色兼容Win 10
 from colorama import init,Fore
@@ -86,8 +89,9 @@ def run_algorithm(al_num, question, choices):
         count_base(question, choices)
 
 if __name__ == '__main__':
-    question = '新装修的房子通常哪种化学物质含量会比较高?'
-    choices = ['甲醛', '苯', '甲醇']
+    question = '以下哪种情况可能发生'
+    choices = ['辛亥革命时使用计算机', '五四运动时使用收音机', '一站时期开汽车']
     run_algorithm(1, question, choices)
+    run_algorithm(2, question, choices)
 
 

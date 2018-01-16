@@ -1,6 +1,6 @@
 
 # 答题辅助
-这两天冲顶大会直播答题 APP 突然火了起来，萌生了使用截图，文字识别，搜索来做个小辅助的想法。使用文字识别搜索，只能增加准确率，保证不了全对。
+这两天冲顶大会直播答题 APP 突然火了起来，萌生了使用截图，文字识别，搜索来做个小辅助的想法。使用文字识别搜索，只能增加准确率，保证不了全对。本版本支持python2.7原作者python3.0
 
 
 
@@ -116,7 +116,7 @@ Windows下链接：
 
 其他系统：
 https://github.com/tesseract-ocr/tesseract/wiki
-
+访问此链接https://github.com/QiuYeHong90/tessdata下载chi_sim.traineddata 即可替换电脑上的
 #### 5. 修改  `common/ocr.py` 代码相应目录信息
 ```
 # win环境

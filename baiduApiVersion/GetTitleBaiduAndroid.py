@@ -1,8 +1,9 @@
+# -*- Python 3.6.0 -*-
 # -*- coding: utf-8 -*-
 
-# @Author  : Skye
-# @Time    : 2018/1/8 20:38
-# @desc    : python 3 , 答题闯关辅助，截屏 ，OCR 识别，百度搜索
+# @Author : ud63isyl
+# @Time : 2018/1/25 20:23
+# @desc : 答题闯关辅助，截屏 ，OCR 识别，百度搜索
 
 import io
 import urllib.parse
@@ -12,11 +13,30 @@ import base64
 import matplotlib.pyplot as plt
 from PIL import Image
 import os
+from baidu_ocr import baidu_ocr
 
 def pull_screenshot():
     os.system('adb shell screencap -p /sdcard/screenshot.png')
     os.system('adb pull /sdcard/screenshot.png .')
 
+def config():
+    baidu_para = open (r".\baidu-key.txt" , "r" , encoding = "utf-8")
+    temp = baidu_para.read()
+    para_list = temp.split ("\n")
+    APP_ID = para_list[0].split(":")[-1]
+    API_KEY = para_list[1].split(":")[-1]
+    SECRET_KEY = para_list[2].split(":")[-1]
+    
+ocr_client = baidu_ocr()
+img = Image.open("./screenshot.png")
+region = img.crop((0 , 400 , 1440 , 1560))
+imgByteArr = io.BytesIO()
+region.save(imgByteArr, format="PNG")
+image_data = imgByteArr.getvalue()
+
+result = ocr_client.img_to_str (image_data)
+print (result)
+'''   
 pull_screenshot()
 img = Image.open("./screenshot.png")
 
@@ -55,3 +75,4 @@ for i in r.json()['words_result']:
     result += i['words']
 result = urllib.parse.quote(result)
 webbrowser.open('https://baidu.com/s?wd='+result)
+'''
